@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <section>
+        <div class="header">
+            <h1>Indian Institute of Information Technology Allahabad</h1>
+        </div>
+
+        <div class="college_logo">
+            <img src="images/Indian_Institute_of_Information_Technology,_Allahabad_Logo.png">
+        </div>
+        
+        <div class="form-box">
+            <div class="form-value">
+                <div class="mydiv">
+                   <div> 
+                    <h2>Update Profile</h2>
+                     <div class="inputbox">
+                        {{!-- <ion-icon name="lock-closed-outline"></ion-icon> --}}
+                        <input type="date" name = "DOB" id="dob">
+                        <label for="">Date of Birth</label>
+                    </div>
+                      <div class="inputbox">
+                        {{!-- <ion-icon name="lock-closed-outline"></ion-icon> --}}
+                        <input type="number" name = "phonenumber" id="phoneNo" required>
+                        <label for="">Contact</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email id" name = "email id" id="user_email" required>
+                        <label for="">Email id</label>
+                    </div>
+                    {{!-- <input type="submit"></input> --}}
+                    <button id = "reg_btn">Update</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div class="footer">
+            <marquee><h1>updates: Software engineering project deadline is coming soon | DBMS project is to be uploaded by 28 March |
+                CN Report has to uploaded by monday |
+            </h1></marquee>
+        </div>
+        <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-Ki5P8lES0jeEIeQ4BZEV3ksZbWoQAa4",
+    authDomain: "seprozect.firebaseapp.com",
+    databaseURL: "https://seprozect-default-rtdb.firebaseio.com",
+    projectId: "seprozect",
+    storageBucket: "seprozect.appspot.com",
+    messagingSenderId: "245001401384",
+    appId: "1:245001401384:web:6a0bd0758311047584711d"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL }
+      from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
+
+    import {getDatabase,ref,set,child,get,update,remove} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+      const db = getDatabase();
+
+        let dob=document.getElementById("dob");
+        let phoneNo=document.getElementById("phoneNo");
+        let Email=document.getElementById("user_email");
+        let updatez=document.getElementById("reg_btn");
+        var currentuser=null;
+        
+        function getUsername(){
+            let keepLoggedIn=localStorage.getItem("keepLoggedIn");
+            if(keepLoggedIn=="yes"){
+                currentuser=JSON.parse(localStorage.getItem('user'));
+            }
+            else{
+                currentuser=JSON.parse(sessionStorage.getItem('user'));
+            }
+        }
+
+        function isEmptyOrSpaces(str){
+            return str===null || str.match(/^ *$/)!==null;
+        }
+
+        function Validation() {
+            let email=/^[a-zA-Z0-9]+@(gmail|yahoo|outlook)\.com$/;
+            let no=/^[0-9]$/;
+            if(isEmptyOrSpaces(phoneNo.value) || isEmptyOrSpaces(dob.value)){
+                alert("fields cannot be empty or contain only spaces");
+                return;
+            }
+            if(!email.test(Email.value)){
+                alert("Enter a valid email");
+                return false;
+            }
+            return true;
+        }
+
+        function UpdateUser(){
+            getUsername();
+            //console.log(currentuser.Enrollment.value);
+            console.log(currentuser.Enrollment);
+            if(!Validation()) return;
+            update (ref(db, "UsersList/"+currentuser.Enrollment), { 
+            DOB: dob.value, 
+            email: Email.value, 
+            phone_no: phoneNo.value
+})
+.then(()=>{
+alert("data stored successfully");
+})
+.catch((error)=>{
+alert("unsuccessful, error"+error);
+});
+        }
+        updatez.addEventListener("click",UpdateUser);
+        </script>
+</body>
+</html>

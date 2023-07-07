@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>studentProjects</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"rel="stylesheet'><link rel="stylesheet" href="css/s_projects.css">
+	 <style>
+    /* Navigation Bar Styling */
+    nav {
+      background-color: #333;
+      overflow: hidden;
+    }
+    nav a {
+      float: left;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    nav a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+
+
+  {{!-- <a href="/web_dev">loda</a>    --}}
+<div class="app">
+   {{!-- <div class="hello">
+   <nav>
+    <a href="#">Web Development</a>
+    <a href="#">App Development</a>
+    <a href="#">AI/ML Development</a>
+  </nav> --}}
+   <div class="frame">
+   <a href="/ai_ml"><button class="custom-btn btn-3"><span>Ai Ml Development</span></button></a> 
+   <a href="/web_dev"><button class="custom-btn btn-3"><span>Web Development</span></button></a>
+   <a href="/app_dev"><button class="custom-btn btn-3"><span>App Development</span></button></a>
+   <a href="/allprojects"><button class="custom-btn btn-3"><span>All Projects</span></button></a>
+   </div>
+
+  </div>
+	<div class="cardList">
+		<button class="cardList__btn btn btn--left">
+			<div class="icon">
+				<svg>
+					<use xlink:href="#arrow-left"></use>
+				</svg>
+			</div>
+		</button>
+
+		<div class="cards__wrapper">
+			<div class="card current--card">
+				<div class="card__image">
+					<img src="https://assets-global.website-files.com/5f15530648874c5f977e91c2/637ef1f502c0f83324cbf1ad_ABM%20College%20Web%20developer%20main.jpg" alt="" />
+				</div>
+			</div>
+
+			<div class="card next--card">
+				<div class="card__image">
+					<img src="http://animixplaynews.com/wp-content/uploads/2022/12/1_JUSbO0xkXPf2jtYLMSAZ8w.jpeg" alt="" style="height: 400px; width: 250px;" />
+				</div>
+			</div>
+			<div class="card previous--card">
+				<div class="card__image">
+					<img src="https://nypost.com/wp-content/uploads/sites/2/2022/02/artificial-intelligence-210713-GettyImages-1328784596.jpg?quality=75&strip=all&w=1024" alt="" />
+				</div>
+			</div>
+		</div>
+
+		<button class="cardList__btn btn btn--right">
+			<div class="icon">
+				<svg>
+					<use xlink:href="#arrow-right"></use>
+				</svg>
+			</div>
+		</button>
+	</div>
+
+   
+	<div class="infoList">
+		<div class="info__wrapper">
+			<div class="info current--info">
+				<h1 class="text name"> Web</h1>
+				<h4 class="text location">Development</h4>
+            
+				
+			</div>
+       
+			<div class="info next--info">
+				<h1 class="text name">App</h1>
+				<h4 class="text location">Development</h4>
+				
+			</div>
+
+			<div class="info previous--info">
+				<h1 class="text name">Ai ML</h1>
+				<h4 class="text location">Development</h4>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<div class="app__bg">
+		<div class="app__bg__image current--image">
+			<img src="https://assets-global.website-files.com/5f15530648874c5f977e91c2/637ef1f502c0f83324cbf1ad_ABM%20College%20Web%20developer%20main.jpg" alt="" />
+		</div>
+		<div class="app__bg__image next--image">
+			<img src="https://reliasoftware.com/static/9ce8aa204a21e69716018fee472b042c/the-complete-guide-to-mobile-app-development-2021.png" alt="" />
+		</div>
+		<div class="app__bg__image previous--image">
+			<img src="https://nypost.com/wp-content/uploads/sites/2/2022/02/artificial-intelligence-210713-GettyImages-1328784596.jpg?quality=75&strip=all&w=1024" alt="" />
+		</div>
+	</div>
+</div>
+
+<div class="loading__wrapper">
+	<div class="loader--text">Loading...</div>
+	<div class="loader">
+		<span></span>
+	</div>
+</div>
+
+
+<svg class="icons" style="display: none;">
+	<symbol id="arrow-left" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+		<polyline points='328 112 184 256 328 400'
+					 style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' />
+	</symbol>
+	<symbol id="arrow-right" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+		<polyline points='184 112 328 256 184 400'
+					 style='fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px' />
+	</symbol>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+<div class="support">
+	<a href="https://twitter.com/DevLoop01" target="_blank"><i class="fab fa-twitter-square"></i></a>
+	<a href="https://dribbble.com/devloop01" target="_blank"><i class="fab fa-dribbble"></i></a>
+</div>
+<!-- partial -->
+  <script src='https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js'></script><script  src="./s_projects.js"></script>
+
+</body>
+</html>

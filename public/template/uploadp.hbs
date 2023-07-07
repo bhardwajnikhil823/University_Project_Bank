@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    
+    /* ..//images/paper-plans-projects-paper.jpg */
+    background: url('https://cutewallpaper.org/21/free-gif-backgrounds/Free-Backgrounds-and-Photos.gif')no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(224, 219, 219, 0.5);
+}
+.footer h1{
+    color: rgb(28, 6, 230);
+}
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(224, 219, 219, 0.5);
+}
+.college_logo{
+    position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: -20px;
+  padding: 20px;
+}
+.college_logo img {
+    height: 80px;
+    width: 80px;
+}
+
+.form-box{
+    position: relative;
+    width: 1000px;
+    height: 300px;
+    margin-left: 250px;
+    margin-top: 100px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+h2{
+    font-size: 2em;
+    color: #0c0909;
+    text-align: center;
+}
+.inputbox{
+    position: relative;
+    margin: 30px 20px;
+    width: 1000px;
+    border-bottom: 2px solid #fff;
+}
+
+
+
+
+.mydiv {
+ 
+    width: 1000px;
+    height:300px;
+    /* background-color: rgb(255, 255, 255);   */
+    background: transparent;
+    margin:50px 50px;
+    border-radius: 8px;
+    
+    -webkit-box-shadow:0 0 100px #020202; 
+    -moz-box-shadow: 0 0 100px #070707; 
+    box-shadow: 0 0 100px #070707;
+    position: relative;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+      img{
+        height: 0px;
+        width: 0px;
+      }
+      label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+button {
+    margin-right: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2196f3;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0d8bf2;
+}
+
+img {
+  height: 200px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+label[id="upprogress"] {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.glitch{
+    margin-left: 525px;
+    margin-top: 100px;
+    color: white;
+    font-family: 'FAMILY_NAME';
+ src: url(FONT_FILE_NAME.woff2) format('woff2');
+ font-size: 40px;
+
+}
+#subjectbox{
+   margin-right: 30px;
+}
+    </style>
+</head>
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+
+<div class="glitch">Upload Your File in ZIP Format</div> 
+    <div class="form-box">
+            <div class="form-value">
+                <div class="mydiv">
+              <label>File Name</label>
+    <input type="text" id="namebox" > <label id="extlab"></label><br><br><br>
+      <label for="">Subject</label>
+     <input type="text" name = "Subject" id="subjectbox" required>
+      <label for="">ProjectID</label>
+           <input type="number" name = "Subject" id="idbox" required>
+    <label id="upprogress"></label>
+    <div id="btns"><button id="selbtn">Select Button</button></div>
+   <div id="btns"> <button id="upbtn">Upload Button</button></div>
+            </div>
+        </div>
+        </div>
+    
+    <script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-Ki5P8lES0jeEIeQ4BZEV3ksZbWoQAa4",
+    authDomain: "seprozect.firebaseapp.com",
+    databaseURL: "https://seprozect-default-rtdb.firebaseio.com",
+    projectId: "seprozect",
+    storageBucket: "seprozect.appspot.com",
+    messagingSenderId: "245001401384",
+    appId: "1:245001401384:web:6a0bd0758311047584711d"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL }
+      from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
+
+    import {getDatabase,ref,set,child,get} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+      const db = getDatabase();
+
+    var files = [];
+      var reader = new FileReader();
+      var namebox = document.getElementById('namebox');
+      var extlab = document.getElementById('extlab');
+      var myimg = document.getElementById('myimg'); 
+      var proglab = document.getElementById('upprogress');
+      var SelBtn = document.getElementById('selbtn');
+      var UpBtn = document.getElementById('upbtn');
+      var subject = document.getElementById('subjectbox');
+      var pid = document.getElementById('idbox');
+
+var input = document.createElement('input');
+     input.type = 'file';
+     input.accept = ".zip,.rar,.7zip";
+input.onchange = e => {
+  files = e.target.files;
+  
+  var extension = GetFileExt(files[0]);
+  var name = GetFileName(files[0]);
+
+  namebox.value = name;
+  extlab.innerHTML = extension;
+
+  reader.readAsDataURL(files[0]);
+}
+
+reader.onload = function(){
+  myimg.src = reader.result;
+}
+
+
+  SelBtn.onclick = function(){
+    input.click();
+  }
+
+function GetFileExt(file) {
+    var temp = file.name.split('.');
+    var ext = temp.slice((temp.length-1),(temp.length));
+    return '.' + ext[0];
+  }
+   function GetFileName(file){
+    var temp = file.name.split('.');
+    var fname = temp.slice(0,-1).join('.');
+    return fname;
+   }
+
+  async function UploadProess(){
+    var ImgToUpload = files[0];
+
+    var ImgName = namebox.value + extlab.innerHTML;
+
+    const metaData = {
+      contentType: ImgToUpload.type
+    }
+    const storage = getStorage();
+    const storageRef = sRef(storage,"Projects/" + ImgName);
+    const UploadTask = uploadBytesResumable(storageRef,ImgToUpload,metaData);
+    UploadTask.on('state-changed',(snapshot) => {
+      var progess = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      proglab.innerHTML = "Upload " + progess + "%";
+    },
+    (error) => {
+      alert("error: File not uploaded!");
+    },
+    () => {
+      getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
+        console.log(downloadURL);
+        SaveURLtoFirestore(downloadURL);
+      })
+    }
+    );
+   }
+
+   async function SaveURLtoFirestore(url){
+    var name = namebox.value;
+    var ext = extlab.innerHTML;
+
+    // var ref = doc(db, "ImageLinks/" + name);
+    // await setDoc(ref,{
+    //   ImageName: (name + ext),
+    //   ImageURL: url
+    // })
+
+    const dbRef=ref(db);
+            get(child(dbRef,"ProjectLinks/"+ name)).then((snapshot)=>{
+                if(snapshot.exists()){
+                    alert("Account with the same Project already exists!!");
+                }
+                else{
+                    set(ref(db,"ProjectLinks/"+ name),{
+                      ProjectID: pid.value,
+                      ProjectName: (name + ext),
+                      ProjectURL: url,
+                      Subject: subject.value
+                    })
+                }
+            });
+   }
+
+  UpBtn.onclick = UploadProess;
+</script>
+</body>
+</html>

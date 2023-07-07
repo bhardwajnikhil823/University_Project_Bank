@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/s_profile.css">
+  <title>universityprojectbank</title>
+</head>
+<style>
+    section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    
+    /* ..//images/paper-plans-projects-paper.jpg */
+    background: url('https://static.wixstatic.com/media/b802fa_81a9d06b87b4427d965a99f36c731ac5~mv2.gif')no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.nav-pills > li > a {
+   border-radius: 0;
+}
+
+#wrapper {
+   padding-left: 0;
+   -webkit-transition: all 0.5s ease;
+   -moz-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
+   overflow: hidden;
+}
+#sidebar-wrapper {
+    width: 247px;
+    margin-top: -17%;
+}
+#wrapper.toggled {
+   padding-left: 250px;
+   overflow: hidden;
+}
+
+{{!-- #sidebar-wrapper {
+   z-index: 1000;
+   position: absolute;
+   left: 250px;
+   width: 0;
+   height: 100%;
+   margin-left: -250px;
+   overflow-y: auto;
+   background: #000;
+   -webkit-transition: all 0.5s ease;
+   -moz-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
+} --}}
+#sidebar-wrapper {
+   z-index: 1000;
+    position: fixed;
+    left: 276px;
+    width: 0px;
+    height: 51%;
+    margin-top: -150px;
+    margin-left: -276px;
+    overflow-y: overlay;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.no-margin {
+    margin: -83px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+   width: 250px;
+}
+
+#page-content-wrapper {
+   position: absolute;
+   padding: 15px;
+   width: 100%;
+   overflow-x: hidden;
+}
+.menubtn{
+     margin-left: 1300px;
+    
+     width: 100px;
+    }
+.xyz {
+   min-width: 360px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+   position: relative;
+   margin-right: 0px;
+}
+
+.fixed-brand {
+   width: auto;
+}
+/* Sidebar Styles */
+
+.sidebar-nav {
+   position: absolute;
+   top: 0;
+   width: 250px;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   margin-top: 2px;
+}
+
+.sidebar-nav li {
+   text-indent: 15px;
+   line-height: 40px;
+}
+
+.sidebar-nav li a {
+   display: block;
+   text-decoration: none;
+   color: #999999;
+}
+
+.sidebar-nav li a:hover {
+   text-decoration: none;
+   color: #fff;
+   background: rgba(255, 255, 255, 0.2);
+   border-left: red 2px solid;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+   text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+   height: 65px;
+   font-size: 18px;
+   line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+   color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+   color: #fff;
+   background: none;
+}
+
+.no-margin {
+   margin: 0;
+}
+.col-lg-12{
+   margin-right: 350px;
+   
+}
+@media (min-width: 768px) {
+   #wrapper {
+      padding-left: 250px;
+   }
+   .fixed-brand {
+      width: 250px;
+   }
+   #wrapper.toggled {
+      padding-left: 0;
+   }
+   #sidebar-wrapper {
+      width: 250px;
+   }
+   #wrapper.toggled #sidebar-wrapper {
+      width: 250px;
+   }
+   #wrapper.toggled-2 #sidebar-wrapper {
+      width: 50px;
+   }
+   #wrapper.toggled-2 #sidebar-wrapper:hover {
+      width: 250px;
+   }
+   #page-content-wrapper {
+      padding: 20px;
+      position: relative;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+   }
+   #wrapper.toggled #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+      padding-left: 250px;
+   }
+   #wrapper.toggled-2 #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+      margin-left: -200px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      width: auto;
+   }
+}
+
+</style>
+<body>
+    <section>
+        
+        <div class="header">
+            <h1>Indian Institute of Information Technology Allahabad </h1>
+            <div class="menubtn">
+               <a  id="signoutlinka" href="signup.html"><button id="signoutlink"></button></a>
+            </div>
+        </div>
+
+        <div class="college_logo">
+            <img src="images/Indian_Institute_of_Information_Technology,_Allahabad_Logo.png">
+        </div>
+            <nav class="navbar navbar-default no-margin">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header fixed-brand">
+           {{!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle"> --}}
+  <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+  </button>
+          
+        </div>
+        <!-- navbar-header-->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+              <li class="active">
+                 {{!-- <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> --}}
+                 </button>
+              </li>
+           </ul>
+        </div>
+        <!-- bs-example-navbar-collapse-1 -->
+     </nav>
+        <div id="wrapper">
+        <!-- Sidebar -->
+      
+        <div id="page-content-wrapper">
+           <div class="container-fluid xyz">
+              <div class="row">
+                 <div class="col-lg-12">
+                   
+                    <h1 class="welcome" style="color: rgb(51, 0, 255);"><b>View Project</b></h1><br>
+                    ProjectName : <h1><a id="userlinka" href="#"><p id="userlink">Login</p></a></h1>
+                    ProjectID: <h1><a id="userlinka1" href="#"><p id="userlink1">Login</p></a></h1>
+                    Subject: <h1><a id="userlinka3" href="#"><p id="userlink3">Login</p></a></h1>
+                    Download_Project: <h1><a id="userlinka4" href="#"><p id="userlink4">Login</p></a></h1>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+     </div>
+ 
+
+        <div class="footer">
+            {{!-- <marquee><h1>updates: Software engineering project deadline is coming soon | DBMS project is to be uploaded by 28 March |
+                CN Report has to uploaded by monday |
+            </h1></marquee> --}}
+        </div>
+    </section>
+         <script>
+        $("#menu-toggle").click(function(e) {
+   e.preventDefault();
+   $("#wrapper").toggleClass("toggled");
+});
+$("#menu-toggle-2").click(function(e) {
+   e.preventDefault();
+   $("#wrapper").toggleClass("toggled-2");
+   $('#menu ul').hide();
+});
+
+function initMenu() {
+   $('#menu ul').hide();
+   $('#menu ul').children('.current').parent().show();
+   //$('#menu ul:first').show();
+   $('#menu li a').click(
+      function() {
+         var checkElement = $(this).next();
+         if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+            return false;
+         }
+         if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+            $('#menu ul:visible').slideUp('normal');
+            checkElement.slideDown('normal');
+            return false;
+         }
+      }
+   );
+}
+$(document).ready(function() {
+   initMenu();
+});
+     </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        let userlink=document.getElementById('userlink');
+        let userlink1=document.getElementById('userlink1');
+        let userlink3=document.getElementById('userlink3');
+        let userlink4=document.getElementById('userlink4');
+        let signoutlink=document.getElementById('signoutlink');
+        let userlinka=document.getElementById('userlinka');
+        let userlinka1=document.getElementById('userlinka1');
+        let userlinka3=document.getElementById('userlinka3');
+        let userlinka4=document.getElementById('userlinka4');
+        let signoutlinka=document.getElementById('signoutlinka');
+        var currentuser=null;
+        
+        function getProject(){
+                currentuser=JSON.parse(sessionStorage.getItem('pro'));
+        }
+        function SignOut(){
+            sessionStorage.removeItem('pro');
+            var loc = window.location.href;
+            window.location.href = "https://university-prohect-bankkk.onrender.com/search_aiml";
+        }
+      function SignOut1(){
+            sessionStorage.removeItem('pro');
+            var loc = window.location.href;
+            window.location.href = "https://university-prohect-bankkk.onrender.com/search_appd";
+        }
+      function SignOut2(){
+            sessionStorage.removeItem('pro');
+            var loc = window.location.href;
+            window.location.href = "https://university-prohect-bankkk.onrender.com/search_webdev";
+        }
+        window.onload=()=>{
+            getProject();
+            if(currentuser==null){
+                userlink.innerText="Login";
+                userlink.classList.remove("btn");
+                userlink.classList.add("button");
+                userlinka.href="login.html";
+                userlinka1.href="login.html";
+            }
+            else{
+                var temp = (currentuser.ProjectName).split('.');
+            var fname = temp.slice(0,-1).join('.');
+                userlink.innerText = fname;
+                userlink1.innerText=currentuser.ProjectID;
+                userlink3.innerText=currentuser.Subject;
+                userlink4.innerText="Download";
+                userlink.classList.add("btn");
+                userlink.classList.remove("button");
+                userlink4.addEventListener('click',function() {
+                    var loc = window.location.href;
+                    window.location.href = currentuser.ProjectURL;
+});
+                userlinka.href="#";
+                userlinka1.href="#";
+                userlinka3.href="#";
+                userlinka4.href="#";
+                
+                signoutlink.innerText="Back";
+              if(currentuser.Subject == "ML"){
+                signoutlinka.href="javascript:SignOut()";
+              }else if(currentuser.Subject == "APPD"){
+                signoutlinka.href="javascript:SignOut1()";
+              }else if(currentuser.Subject == "WEBD"){
+                signoutlinka.href="javascript:SignOut2()";
+              }
+            }
+            
+        }
+        
+      </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/allprojects.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <style>
+       
+     body{
+    background-image: url('https://cdn.dribbble.com/users/3050354/screenshots/14646894/media/1f31948afd5401c44d4bae934f07641a.gif');
+    background-size: cover;
+    background-position: 150px -160px;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td {
+  border: 1px solid #3886d07e;
+  padding: 8px;
+  width: 500px;
+  background-color: #46f8f597;
+}
+
+#customers tr:nth-child(){background-color: #04AA6D;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+     border: 1px solid #ddd;
+     width: 100px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: rgb(255, 255, 255);
+}
+.glitch{
+  color: #030303;
+  font-size: 100px;
+  margin-left: 500px;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+}
+
+    </style>
+</head>
+
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+
+<div class="glitch" data-text="GLITCH">ProjectsApproved</div> 
+    <div class="container mt-3">
+        <table id="customers">
+            <thead>
+                <th>ProjectID</th>
+                <th>ProjectName</th>
+                <th>ProjectURL</th>
+                <th>Subject</th>
+            </thead>
+            <tbody id="tbody1" class="tableorder"></tbody>
+        </table>
+    </div>
+
+    <script type = "module">
+        var tbody = document.getElementById('tbody1');
+        function AddItemToTable(pid, name, pURL, subject) {
+            let trow = document.createElement("tr");
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+            let td4 = document.createElement('td');
+            let td5 = document.createElement('td');
+            td2.innerHTML = pid;
+            td3.innerHTML = name;
+            td4.innerHTML = "<u><b>Download</b></u>";
+            td5.innerHTML = subject;  
+            td4.addEventListener('click',function() {
+                    var loc = window.location.href;
+                    window.location.href = pURL;
+});
+           
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            trow.appendChild(td4);
+            trow.appendChild(td5);
+            tbody.appendChild(trow);
+        }
+
+        function AddAllItemsToTable(TheStudent) {
+            tbody.innerHTML = "";
+            TheStudent.forEach(element => {
+                AddItemToTable(element.ProjectID, element.ProjectName, element.ProjectURL, element.Subject)
+            });
+        }
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyD-Ki5P8lES0jeEIeQ4BZEV3ksZbWoQAa4",
+            authDomain: "seprozect.firebaseapp.com",
+            databaseURL: "https://seprozect-default-rtdb.firebaseio.com",
+            projectId: "seprozect",
+            storageBucket: "seprozect.appspot.com",
+            messagingSenderId: "245001401384",
+            appId: "1:245001401384:web:6a0bd0758311047584711d"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL }
+            from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
+
+        import { getDatabase, ref, set, child, get, update, remove, onValue } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+        const db = getDatabase();
+
+
+        function GetAllDataOnce() {
+            const dbRef = ref(db,"ProjectApproveList");
+           onValue(dbRef,(snapshot) => {
+           
+                var students = [];
+            snapshot.forEach(childSnapshot => {
+                if(childSnapshot.val().Subject == "APPD"){
+                console.log(childSnapshot.val().Subject);
+                students.push(childSnapshot.val());
+                }
+            });
+            AddAllItemsToTable(students);
+           })
+        }
+        window.onload = GetAllDataOnce;
+    </script>
+</body>
+
+</html>

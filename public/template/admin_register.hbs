@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/register.css">
+  <title>universityprojectbank</title>
+  <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <section>
+        <div class="header">
+            <h1>Indian Institute of Information Technology Allahabad</h1>
+        </div>
+
+        <div class="college_logo">
+            <img src="images/Indian_Institute_of_Information_Technology,_Allahabad_Logo.png">
+        </div>
+        
+        <div class="form-box">
+            <div class="form-value">
+                <div class="mydiv">
+                <div>
+                    <h2>Admin Registeration</h2>
+                    <div class="inputbox">
+                        <input type="text" name = "text" id = "username"required>
+                        <label for="">Name</label>
+                    </div>
+                    <div class="inputbox">
+                        {{!-- <ion-icon name="lock-closed-outline"></ion-icon> --}}
+                        <input type="text" name = "roll" id="adminid" required>
+                        <label for="">ID</label>
+                    </div>
+                      <div class="inputbox">
+                        {{!-- <ion-icon name="lock-closed-outline"></ion-icon> --}}
+                        <input type="number" name = "phonenumber" id="phoneNo" required>
+                        <label for="">Contact</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email id" name = "email id" id="useremail" required>
+                        <label for="">Email id</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name = "password" id = "pass_inp" required>
+                        <label for="">Password</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name = "password" id="cnf_pass" required>
+                        <label for="">Confirm Password</label>
+                    </div>
+                    
+                    {{!-- <input type="submit"></input> --}}
+                    <button id="reg_btn">Sign Up</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div class="footer">
+            <marquee><h1>Please enter your details admin
+            </h1></marquee>
+        </div>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-Ki5P8lES0jeEIeQ4BZEV3ksZbWoQAa4",
+    authDomain: "seprozect.firebaseapp.com",
+    databaseURL: "https://seprozect-default-rtdb.firebaseio.com",
+    projectId: "seprozect",
+    storageBucket: "seprozect.appspot.com",
+    messagingSenderId: "245001401384",
+    appId: "1:245001401384:web:6a0bd0758311047584711d"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import {getDatabase,ref,set,child,get} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+
+        const db=getDatabase();
+
+        const Name=document.getElementById("username");
+        const adminid=document.getElementById("adminid");
+        const phoneNo=document.getElementById("phoneNo");
+        const Email=document.getElementById("useremail");
+        const pass=document.getElementById("pass_inp");
+        const cnfpass=document.getElementById("cnf_pass");
+        const reg=document.getElementById("reg_btn");
+    
+    function isEmptyOrSpaces(str){
+            return str===null || str.match(/^ *$/)!==null;
+        }
+    
+    function Validation() {
+            let nameregex=/^[a-z A-Z\s]+$/;
+            let email=/^[a-zA-Z0-9]+@(gmail|yahoo|outlook)\.com$/;
+            let no=/^[0-9]$/;
+            if(isEmptyOrSpaces(Name.value) || isEmptyOrSpaces(adminid.value) || isEmptyOrSpaces(phoneNo.value) || isEmptyOrSpaces(pass.value)){
+                alert("fields cannot be empty or contain only spaces");
+                return;
+            }
+            if(!nameregex.test(Name.value)){
+                alert("The name should only contain alphabets");
+                return false;
+            }
+            if(!email.test(Email.value)){
+                alert("Enter a valid email");
+                return false;
+            }
+            if(pass.value!==cnfpass.value){
+                alert("Passwords doesn't match");
+                return false;
+            }
+            return true;
+        }
+
+    function EncryptPass(){
+            var pass12=CryptoJS.AES.encrypt(pass.value,pass.value);
+            return pass12.toString();
+        }  
+    function RegisterUser() {
+            if(!Validation()) return;
+            const dbRef=ref(db);
+            console.log(adminid.value);
+            get(child(dbRef,"AdminList/"+adminid.value)).then((snapshot)=>{
+                if(snapshot.exists()){
+                    alert("Account with the same name already exists!!");
+                }
+                else{
+                    set(ref(db,"AdminList/"+adminid.value),{
+                        Name:Name.value,
+                        adminid:adminid.value,
+                        email:Email.value,
+                        phone_no:phoneNo.value,
+                        password:EncryptPass()
+                    })
+                    .then(()=>{
+                        alert("User added Successfully");
+                    //    window.location="student.hbs";
+                    })
+                    .catch(()=>{
+                        alert("Error");
+                    })
+                }
+            });
+        }
+    reg.addEventListener("click",RegisterUser);
+</script>
+</body>
+</html>

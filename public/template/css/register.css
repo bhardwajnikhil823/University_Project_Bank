@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    
+    /* https://cdn.domestika.org/c_limit,dpr_auto,f_auto,q_auto,w_820/v1587483114/content-items/004/280/247/coronavirusextra-original.gif?1587483114 */
+    background: url('https://blog.zoho.com/sites/zblogs/images/cliq/cliq-projects-integration-blog-2019-05.gif')no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* margin-top: 40px; */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(224, 219, 219, 0.5);
+}
+.footer h1{
+    color: rgb(28, 6, 230);
+}
+.footer {
+    position: relative;
+    bottom: 0;
+    padding: 20px;
+    height: 40px;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(8, 86, 138, 0.5);
+  }
+.college_logo{
+    position: absolute;
+  top: 0;
+  left: 0;
+  /* z-index: -1; */
+  margin-top: -20px;
+  padding: 20px;
+}
+.college_logo img {
+    height: 80px;
+    width: 80px;
+}
+
+.form-box{
+    position: relative;
+    z-index: +1;
+    margin-top: 120px;
+    margin-bottom: 50px;
+    width: 400px;
+    height: 700px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+h2{
+    font-size: 2em;
+    color: #0c0909;
+    text-align: center;
+}
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+}
+.inputbox label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #0c0909;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+}
+input:focus ~ label,
+input:valid ~ label{
+top: -5px;
+}
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding:0 35px 0 5px;
+    color: #0c0909;
+}
+.inputbox ion-icon{
+    position: absolute;
+    right: 8px;
+    color: #0c0909;
+    font-size: 1.2em;
+    top: 20px;
+}
+.forget{
+    margin: -15px 0 15px ;
+    font-size: .9em;
+    color: #0c0909;
+    display: flex;
+    justify-content: space-between;  
+}
+
+.forget label input{
+    margin-right: 3px;
+    
+}
+.forget label a{
+    color: #0c0909;
+    text-decoration: none;
+    margin-left: 60px;
+}
+.forget label a:hover{
+    text-decoration: underline;
+    color: rgb(119, 128, 115);
+}
+button{
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+}
+.register{
+    font-size: .9em;
+    color: #0c0909;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+.register p a{
+    text-decoration: none;
+    color: #0c0909;
+    margin-left: 10px;
+    font-weight: 600;
+}
+.register p a:hover{
+    text-decoration: underline;
+    color: rgb(119, 128, 115);
+}
+.mydiv {
+    /* width: 400px;
+    height:100px; */
+    /* background-color: rgb(255, 255, 255);   */
+    background: transparent;
+    margin:50px 50px;
+    border-radius: 8px;
+    
+    -webkit-box-shadow:0 0 100px #020202; 
+    -moz-box-shadow: 0 0 100px #070707; 
+    box-shadow: 0 0 100px #070707;
+    position: relative;
+    width: 400px;
+    height: 700px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

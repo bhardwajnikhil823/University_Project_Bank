@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/index.css">
+  <title>universityprojectbank</title>
+  <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <section>
+        <div class="header">
+            <nav>
+                <ul>
+                    <li><button class="topbtn"><a href="/">Home</a></li>
+                </ul>
+            </nav>
+            <h1>Indian Institute of Information Technology Allahabad</h1>
+        </div>
+        <div class="college_logo">
+            <img src="images/Indian_Institute_of_Information_Technology,_Allahabad_Logo.png">
+        </div>
+        <div class="form-box">
+            <div class="form-value">
+                <div class="mydiv">
+                <div>
+                    <h2>Admin Login</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="text" name="roll" id="adminid" required>
+                        <label for="">AdminId</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password" id = "pass_user" required>
+                        <label for="">Password</label>
+                    </div>
+                    <div class="forget">
+                        <label for=""><input type="checkbox" id="rememberme">Remember Me  <a href="admin_forgotpw
+                        ">Forget Password</a></label>
+                    </div>
+                    {{!-- <input type="submit"></input>  --}}
+                    <button id = "loginbtn">Login</button>
+                    <div class="register">
+                        <p>Don't have a account ?<a href="/admin_register">Register</a></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="footer">
+            <marquee><h1>Welcome Admin
+            </h1></marquee>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-Ki5P8lES0jeEIeQ4BZEV3ksZbWoQAa4",
+    authDomain: "seprozect.firebaseapp.com",
+    databaseURL: "https://seprozect-default-rtdb.firebaseio.com",
+    projectId: "seprozect",
+    storageBucket: "seprozect.appspot.com",
+    messagingSenderId: "245001401384",
+    appId: "1:245001401384:web:6a0bd0758311047584711d"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  import {getDatabase,ref,set,child,get} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+
+        const db=getDatabase();
+    const adminid=document.getElementById('adminid');
+    const pass=document.getElementById('pass_user');
+    const loginbtn=document.getElementById('loginbtn');
+
+    function AuthenticateUser(){
+            const dbref=ref(db);
+            // priary key is not special character in primary key 
+            get(child(dbref,"AdminList/"+adminid.value)).then((snapshot) => {
+                if(snapshot.exists()){
+                    let dbPass=decPass(snapshot.val().password);
+                    if(dbPass!==pass.value || dbPass==""){
+                        alert("Username or Password is Invalid!")
+                        return;
+                    }
+                    else{
+                        login(snapshot.val());
+                    }
+                }
+                else{
+                    alert("Username or Password is Invalid");
+                }
+            });
+        }
+    function decPass(dbpass){
+            console.log(pass.value);
+            var pass12=CryptoJS.AES.decrypt(dbpass,pass.value);
+            console.log(pass12.toString(CryptoJS.enc.Utf8));
+            return pass12.toString(CryptoJS.enc.Utf8);
+        }
+    function login(user){
+            let keeploggedIn=document.getElementById('rememberme').checked;
+            if(!keeploggedIn){
+                sessionStorage.setItem('user',JSON.stringify(user));
+                var loc = window.location.href;
+                window.location.href = "https://university-prohect-bankkk.onrender.com/a_dashboard";
+                console.log(loc);
+            }
+            else{
+                localStorage.setItem('keepLoggedIn','yes'); 
+                localStorage.setItem('user',JSON.stringify(user));
+                var loc = window.location.href;
+                window.location.href = "https://university-prohect-bankkk.onrender.com/a_dashboard";
+                console.log(loc);          
+            }
+        }
+        loginbtn.addEventListener('click',AuthenticateUser);
+</script>
+</body>
+</html>
